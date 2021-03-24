@@ -1,0 +1,15 @@
+{
+  "name": "project-2_request_header_parser_microservice",
+  "version": "1.0.0",
+  "description": "Freecodecamp Project 2 - Request Header Parser Microservice by AdmiJW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AdmiJW",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}

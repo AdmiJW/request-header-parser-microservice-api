@@ -1,0 +1,251 @@
+
+:root {
+    font-size: 10px;
+
+    --navbar-height: 75px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+//==========================
+//          NavBar
+//==========================
+nav {
+    min-height: var(--navbar-height);
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: all .5s ease;
+
+    .navbar-brand {
+        font-size: 2.5rem;
+        transition: font-size .5s ease;
+    }
+
+    .navbar-nav {
+        font-size: 2.8rem;
+
+        .nav-item {
+            padding: 0 15px;
+
+            & > a > i {
+                transition: all .5s ease;
+                transform-origin: center;
+                color: transparentize($color: white, $amount: 0.2) ;
+            }
+
+            &:hover > a > i, &:focus > a > i {
+                transform: scale(1.5);
+                color: white;
+            }
+        }
+    }
+
+    // When it is not in the jumbotron, make the navigation bar background visible
+    &.bg_visible {
+        min-height: calc( var(--navbar-height) - 30px );
+        background-color: #0a0d46;
+
+        .navbar-brand {
+            font-size: 2rem;
+        }
+
+        .navbar-nav {
+            font-size: 2.3rem;
+        }
+    }
+}
+
+
+
+//==========================
+//          Jumbotron
+//==========================
+.jumbotron {
+    background: linear-gradient(#016fce, #00133b);
+    background-image: url('/public/img/background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .container {
+        min-height: 100vh;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: #a1d3ff;
+
+        #jumbotron__text {
+            text-align: center;
+
+            h1 { font-size: 5rem; }
+            p { font-size: 2rem; }
+
+            .cursor {
+                margin-top: 0.2em;
+                background-color: #a1d3ff;
+            }
+        }
+
+        .btn {
+            border-radius: 1.2rem;
+            border: solid 2px #a1d3ff;
+            padding: .2em .8em;
+            overflow: hidden;
+            transition: all .5s ease;
+            width: 56px;
+
+            color: #a1d3ff;
+            font-size: 2rem;
+            box-shadow: 0 0 15px 2px #a1d3ff, inset 0 0 5px 0px #a1d3ff;
+
+            // Upon hover, button extends, and the chevron animate a wave effect
+            &:hover, &:focus {
+                width: 220px;
+
+                .icon > i:first-child {
+                    animation: fade 1.2s linear 0s infinite alternate;
+                }
+                .icon > i:nth-child(2) {
+                    animation: fade 1.2s linear 0.1s infinite alternate;
+                }
+                .icon > i:nth-child(3) {
+                    animation: fade 1.2s linear 0.2s infinite alternate;
+                }
+            }
+
+            p {
+               display: inline-flex;
+               align-items: center;
+               margin: 0;
+               padding-left: 20px;
+               white-space: nowrap;
+            }
+
+            
+        }
+    }
+}
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+
+
+//==========================
+//        Body
+//==========================
+main {
+    background-color: darken(#fff, 3%);
+
+    & > .container {
+        min-height: 500px;
+    }
+
+    .cards {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        .card {
+            width: unquote("min(450px, 95%)");
+
+            background-color: darken(#fff, 3%);
+            border: none;
+            box-shadow: 8px 8px 10px 0 #fff,
+                        -8px -8px 10px 0 darken(#fff, 10%);
+            border-radius: 20px;
+    
+            .card-body {
+                h4 { font-size: 2.5rem; }
+                p, a { font-size: 1.5rem; }
+            }
+        }
+    }
+    
+}
+
+
+
+//==========================
+//        Footer
+//==========================
+footer {
+    .lead {
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+
+
+
+
+//=======================================================================================================================
+//==========================================
+//        Media Queries for Large Screen 
+//==========================================
+
+@media screen and (min-width: 768px) {
+    // Jumbotron
+    .jumbotron {
+        .container {
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 8%;
+
+            #jumbotron__text {
+                text-align: left;
+    
+                h1 { font-size: 6rem; }
+                p { font-size: 3rem; }
+            }
+
+            .btn {
+                transform: scale(1.3);
+                transform-origin: left;
+            }
+        }
+    }
+
+    // Content
+    main {
+        .cards {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: stretch;
+    
+            .card ~ .card {
+                margin-left: 5%;
+            }
+        }
+    }
+
+    //Footer
+    footer {
+        .lead {
+            font-size: 3rem;
+        }
+    }
+}
+
+

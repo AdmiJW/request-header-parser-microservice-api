@@ -1,0 +1,126 @@
+<!--
+    To DO in CSS:
+    >   The Button shall expand on hover, animated
+    >   The jumbotron has the text typer implemented. 
+    >   The navigation bar background was initially invisible, but transitions to visible after reach the bottom part
+    >   Responsiveness for mobile and large screen
+-->
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Request Header Parser Microservice</title>
+
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta name='author' content='AdmiJW'/>
+    <meta name='description' content='FreeCodeCamp Project 2 - Request Header Parser Microservices'/>
+    <meta name='keywords' content='html css js nodejs express'/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Fav Icon-->
+    <link rel="shortcut icon" type="image/svg" href="/public/img/headers.svg"/>
+
+    <!-- BootStrap - CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/7c7cd4fe53.js" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel='stylesheet' type='text/css' href='/public/styles/style.css'/>
+
+    <!-- TextTyper - The Module that I made not long ago -->
+    <script defer src='https://unpkg.com/text-typers@latest/build/bundle.js'></script>
+
+    <!-- Javascript -->
+    <script defer src='/public/scripts/script.js'></script>
+</head>
+
+
+<body>
+    <!-- Navigations -->
+    <nav class='navbar navbar-dark '>
+        <div class='container px-md-5'>
+            <!-- Navbar Brand-->
+            <a class='navbar-brand px-3' href='./'>
+                <i class="fas fa-search"></i>
+                WhoAmI
+            </a>
+
+            <!-- Navbar Items -->
+            <ul class='navbar-nav flex-row px-3'>
+                <li class='nav-item'>
+                    <a class='nav-link' href='https://github.com/AdmiJW/' target='_blank' referrerpolicy="no-referrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+
+                <li class='nav-item'>
+                    <a class='nav-link' href='https://www.freecodecamp.org/admi_jw' target='_blank' referrerpolicy="no-referrer">
+                        <i class="fab fa-free-code-camp"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Jumbotron -->
+    <div class='jumbotron'>
+        <div class='container d-flex'>
+            <div id='jumbotron__text'>
+                <h1 class='display-3'></h1>
+                <p class='lead'>A Request Header Parser Microservice</p>
+            </div>
+
+            <a href='./api/whoami' class='btn btn-outline-primary my-3 d-flex align-items-center'>
+                <i class="fas fa-paper-plane"></i>
+                <p>
+                    Who Am I? 
+                    <span class='icon d-flex justify-content-center mx-4'>
+                        <i class="fas fa-chevron-right d-inline-block ml-2"></i>
+                        <i class="fas fa-chevron-right"></i>
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </p>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- Body -->
+    <main>
+        <div class='container d-flex flex-column justify-content-center align-items-center p-5'>
+            <h2 class='display-1 text-center'><strong>How to Use?</strong></h2>
+
+            <div class='cards d-flex'>
+                <div class='card my-5 px-3'>
+                    <div class='card-body text-center'>
+                        <h4 class='card-title text-center my-4'>Example Usage</h4>
+                        <p class='card-text my-3'>Simply send a request to the route <code>/api/whoami</code></p>
+                        <a href='./api/whoami' class='btn btn-link card-link d-inline-block m-auto'>https://admijw-request-header-parser.herokuapp.com/api/whoami</a>
+                    </div>
+                </div>
+    
+                <div class='card my-5 px-3'>
+                    <div class='card-body text-center'>
+                        <h4 class='card-title text-center my-4'>Example Output</h4>
+                        <p class='card-text  my-3'><code>{"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5",
+                            "software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class='bg-dark d-flex justify-content-center p-5'>
+        <p class='lead text-light my-5'>🛠 Created by AdmiJW 🛠</p>
+    </footer>
+
+</body>
+
+</html>
