@@ -22,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
       }
       next();
     });
-  }
+}
 
 
 app.get('/', (req,res)=> {
