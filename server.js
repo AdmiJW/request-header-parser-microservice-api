@@ -3,10 +3,21 @@ require('dotenv').config()
 
 const path = require('path');
 const express = require('express');
+const rateLimiter = require('express-rate-limit');
 const app = express();
 
 
-app.use('/public', express.static('./public') );
+const staticRateLimiter = rateLimiter({
+    windowMs: 1000 * 60 * 5,            // 5 Min, 300 second
+    max: 300                            // Maximum of 300 request for 5 min
+});
+const apiRateLimiter = rateLimiter({
+    windowMs: 1000 * 60 * 5,            // 5 Min, 300 second
+    max: 600                            // Maximum of 600 request for 5 min
+});
+
+
+app.use('/public', staticRateLimiter, express.static('./public') );
 
 //  Resolve CORS issue if the request is from some place
 //  If the environment file does not have DISABLE XORIGIN specified
@@ -25,12 +36,12 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
-app.get('/', (req,res)=> {
+app.get('/', apiRateLimiter, (req,res)=> {
     res.sendFile( path.join(__dirname, '/views/index.html') );
 });
 
 
-app.get('/api/whoami', (req,res)=> {
+app.get('/api/whoami', apiRateLimiter, (req,res)=> {
     const language = req.headers['accept-language'];
     const software = req.headers['user-agent'];
     const ipaddress = req.headers['x-forwarded-for'] || req.ip;
@@ -45,4 +56,4 @@ app.get('/api/whoami', (req,res)=> {
 
 app.listen( process.env.PORT || 3000, ()=> {
     console.log("Request Header Parser Microservice started on port " + (process.env.PORT || 3000) )
-})
+});
